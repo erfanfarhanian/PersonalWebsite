@@ -1,0 +1,39 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Experiences.DeleteExperienceModel
+@{
+    ViewData["Title"] = "حذف سابقه کاری";
+}
+
+<div class="col-md-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            حذف سابقه کاری
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                <input type="hidden" name="experienceId" value="@ViewData["experienceId"].ToString()" />
+
+                <dl class="dl-horizontal">
+                    <dt>نام شرکت : </dt>
+                    <dd>@Model.Experience.Title</dd>
+                    <dt>توضیحات : </dt>
+                    <dd>@Model.Experience.Description</dd>
+                    <dt>از تاریخ : </dt>
+                    <dd>@Model.Experience.FromDate</dd>
+                    <dt>تا تاریخ : </dt>
+                    <dd>@Model.Experience.TillDate</dd>
+                    <dt></dt>
+                    <br />
+                    <dd>
+                        <input type="submit" value="حذف" class="btn btn-warning" />
+                        <a href="/Admin/Experiences/Index" class="btn btn-danger">بازگشت</a>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+

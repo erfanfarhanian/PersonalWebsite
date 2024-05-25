@@ -1,0 +1,18 @@
+﻿@model IEnumerable<PersonalWebsite.DataLayer.Entities.User.Experience>
+
+@foreach (var item in Model)
+{
+    <div class="experience-single">
+        <div class="experience-single-content">
+            <span class="experience-icon flaticon-checked-1"></span>
+            <div class="experience-subtitle">در تاریخ: @item.FromDate</div>
+            <div class="experience-title">@item.Title</div>
+            <div dir="rtl" class="experience-excerpt">@item.Description</div>
+        </div>
+        <div class="experience-single-thumb">
+            <div class="experience-time-rotated-wrapper"><span class="experience-time-rotated">@item.FromDate - @item.TillDate</span></div>
+        </div>
+    </div>
+}
+
+

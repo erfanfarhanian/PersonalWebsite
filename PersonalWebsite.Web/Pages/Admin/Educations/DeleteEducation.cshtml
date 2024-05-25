@@ -1,0 +1,41 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Educations.DeleteEducationModel
+@{
+    ViewData["Title"] = "حذف تحصیلات";
+}
+
+<div class="col-md-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            حذف تحصیلات
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                <input type="hidden" name="educationId" value="@ViewData["educationId"].ToString()" />
+
+                <dl class="dl-horizontal">
+                    <dt>عنوان مدرک : </dt>
+                    <dd>@Model.Education.Title</dd>
+                    <dt>رشته تحصیلی : </dt>
+                    <dd>@Model.Education.Major</dd>
+                    <dt>نام موسسه یا دانشگاه : </dt>
+                    <dd>@Model.Education.University</dd>
+                    <dt>از تاریخ : </dt>
+                    <dd>@Model.Education.FromDate</dd>
+                    <dt>تا تاریخ : </dt>
+                    <dd>@Model.Education.TillDate</dd>
+                    <dt></dt>
+                    <br />
+                    <dd>
+                        <input type="submit" value="حذف" class="btn btn-warning" />
+                        <a href="/Admin/Educations/Index" class="btn btn-danger">بازگشت</a>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+

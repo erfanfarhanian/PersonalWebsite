@@ -1,0 +1,132 @@
+﻿@using PersonalWebsite.Core.Convertors
+@model PersonalWebsite.DataLayer.Entities.Weblog.Blog
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<link rel='stylesheet' href='/css/bootstrap.css' type='text/css' media='all' />
+
+<section id="home-2" class="onepager_section_class first-onepage-section first-page-item">
+</section>
+<div style="background-image:url(/images/blog-top.jpg);" id="header" class="header-wrapper">
+    <div class="center">
+        <div class="logo">
+            <a href="index.html" title="بلاگ"><img class="logoImage" src="/images/blog-logo-top.png" alt="نوشته های من" /><img class="logoImageRetina" src="images/logo.png" alt="عرفان فرهانیان" /></a>
+            <div class="clear">
+            </div>
+        </div>
+        <div dir="rtl" class="menu-wrapper">
+            <div class="main-menu">
+                <div class="menu-main-nav-menu-2-container">
+                    <ul id="menu-main-nav-menu-2" class="sf-menu">
+                        <li class="menu-item"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+                        <li class="menu-item"><a asp-controller="Blog" asp-action="Index">بلاگ</a></li>
+                        <li class="menu-item"><a asp-controller="Project" asp-action="Index">پروژه ها</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="trigger-overlay" class="fa header-search fa-search">
+            </div>
+            <div class="menu-icons-inside">
+                <div class="menu-icon menu-icon-mobile">
+                    <span class="menu-icon-create"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+
+        <div class="mobile-menu-wrapper">
+            <div class="menu-main-nav-menu-container">
+                <ul id="menu-main-nav-menu" class="mobile-menu">
+                    <li class="menu-item"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+                    <li class="menu-item"><a asp-controller="Blog" asp-action="Index">بلاگ</a></li>
+                    <li class="menu-item"><a asp-controller="Project" asp-action="Index">پروژه ها</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+
+<div class="container-wrapper home-container">
+    <div id="container">
+        <!-- start container -->
+        <section dir="rtl" id="single-port">
+            <div class="top-page-link"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a> > <a asp-controller="Blog" asp-action="Index">بلاگ</a> > <span>@Model.Title</span></div>
+            <br />
+            <h2>@Model.Title</h2>
+            <h6>نوشته شده در تاریخ <span>@Model.CreateDate.ToShamsi()</span></h6>
+
+            <img style="height: 550px;" src="/blog/image/@Model.BlogImageName" alt="@Model.Title">
+            <h3 style="line-height:35px;">"@Model.SDescription"</h3>
+            <br />
+            <figure>
+                <p>@Html.Raw(Model.LDescription)</p>
+            </figure>
+            <div class="comment-form-wrapper">
+                <br />
+                <hr />
+                <h2>ثبت نظر</h2>
+                <form asp-controller="Blog" asp-action="CreateComment"
+                      data-ajax="true"
+                      data-ajax-method="post"
+                      data-ajax-mode="replace"
+                      data-ajaxt-update="#singlecomments"
+                      data-ajax-success="Success">
+                    <input type="hidden" name="comment.BlogId" value="@Model.BlogId" />
+                    <div class="name-field">
+                        <input class="form-control" type="text" id="comment_UserName" name="comment.UserName" required oninvalid="this.setCustomValidity('لطفا نام خود را وارد کنید')" oninput="this.setCustomValidity('')" placeholder="*نام" />
+                    </div>
+                    <br />
+                    <div class="message-field">
+                        <textarea class="form-control" name="comment.UserComment" id="comment_UserComment" rows="5" cols="100" required oninvalid="this.setCustomValidity('لطفا نظر خود را وارد کنید')" oninput="this.setCustomValidity('')" placeholder="*متن نظر"></textarea>
+                    </div>
+                    <br />
+                    <input type="submit" value="ثبت" name="submit" class="btn btn-submit" />
+                </form>
+
+                <div dir="rtl" id="comments">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="page-header">
+                                <h1><small class="pull-right"></small> نظرات </h1>
+                            </div>
+                            <div id="singlecomments" class="comments-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.comment-form-wrapper -->
+        <!-- /#comments -->
+        <!-- /#comments -->
+    </div>
+
+    <!-- end container -->
+    <div class="clear"></div>
+</div>
+
+@section Scripts
+    {
+    <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function Success() {
+            $("#comment_UserComment").val("");
+            $("#comment_UserName").val("");
+            alert("نظر شما پس از تایید در سایت قرار خواهد گرفت.")
+        }
+
+        $(function() {
+            $("#singlecomments").load("/Blog/ShowComment/" + @Model.BlogId);
+        });
+
+        function pageComment(pageid) {
+            $("#singlecomments").load("/Blog/ShowComment/" + @Model.BlogId+"?pageId=" + pageid);
+        }
+    </script>
+
+}

@@ -1,0 +1,41 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Skills.DeleteSkillModel
+@{
+    ViewData["Title"] = "حذف مهارت";
+}
+
+<div class="col-md-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            حذف مهارت
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                <input type="hidden" name="skillId" value="@ViewData["skillId"].ToString()" />
+
+                <dl class="dl-horizontal">
+                    <dt>عنوان مهارت : </dt>
+                    <dd>@Model.Skill.Title</dd>
+                    <dt>میزان مهارت : </dt>
+                    <dd>
+                        <div class="col-lg-4">
+                            <div class="progress">
+                                <div class="progress-bar" style="width:@Model.Skill.Percent%">@Model.Skill.Percent%</div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dt></dt>
+                    <br />
+                    <dd>
+                        <input type="submit" value="حذف" class="btn btn-warning" />
+                        <a href="/Admin/Skills/Index" class="btn btn-danger">بازگشت</a>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+

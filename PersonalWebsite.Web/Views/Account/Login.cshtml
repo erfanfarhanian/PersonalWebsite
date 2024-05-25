@@ -1,0 +1,41 @@
+﻿@model PersonalWebsite.Core.DTOs.LoginViewModel
+@{
+    ViewData["Title"] = "ورود";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="container">
+    @*@if (ViewBag.IsSuccess != null)
+    {
+        <div class="alert alert-success">
+            <p class="help-block">ورود با موفقیت انجام شد.</p>
+        </div>
+
+        <script>
+            // Your delay in milliseconds
+            var delay = 3000;
+            setTimeout(function() { window.location = "https://localhost:44310/"; }, delay);
+        </script>
+    }*@
+    <form asp-action="Login" method="post" class="form-signin">
+        <h2 class="form-signin-heading">ورود به حساب کاربری</h2>
+        <div class="login-wrap">
+            <input asp-for="Username" type="text" class="form-control" placeholder="نام کاربری" autofocus>
+            <span class="text-danger" asp-validation-for="Username"></span>
+            <input asp-for="Password" type="password" class="form-control" placeholder="کلمه عبور">
+            <span class="text-danger" asp-validation-for="Password"></span>
+            <label class="checkbox">
+                <input asp-for="RememberMe" type="checkbox"> مرا به خاطر بسپار
+                <span class="pull-right"></span>
+            </label>
+            <input type="submit" value="ورود" class="btn btn-success" />
+            <a asp-controller="Home" asp-action="Index" style="color:white;" class="btn btn-danger">صفحه اصلی</a>
+            <div class="login-social-link">
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+

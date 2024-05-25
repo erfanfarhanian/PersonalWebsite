@@ -1,0 +1,39 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Projects.DeleteProjectModel
+@{
+    ViewData["Title"] = "حذف پروژه";
+}
+
+<div class="col-md-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            حذف پروژه
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                <input type="hidden" name="projectId" value="@ViewData["projectId"].ToString()" />
+
+                <dl class="dl-horizontal">
+                    <dt>عنوان پروژه : </dt>
+                    <dd>@Model.ShowProjectsForAdminViewModel.Title</dd>
+                    <dt>تصویر : </dt>
+                    <dd><img src="~/project/thumb/@Model.ShowProjectsForAdminViewModel.ProjectImage" alt="@Model.ShowProjectsForAdminViewModel.Title" /></dd>
+                    <dt>تاریخ پروژه : </dt>
+                    <dd>@Model.ShowProjectsForAdminViewModel.ProjectDate</dd>
+                    <dt>توضیح مختصر  : </dt>
+                    <dd>@Model.ShowProjectsForAdminViewModel.SDescription</dd>
+                    <dt></dt>
+                    <br />
+                    <dd>
+                        <input type="submit" value="حذف" class="btn btn-warning" />
+                        <a href="/Admin/Projects/Index" class="btn btn-danger">بازگشت</a>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+

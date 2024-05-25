@@ -1,0 +1,44 @@
+﻿@page
+@model PersonalWebsite.Web.Pages.Admin.AboutUser.IndexModel
+@{
+    ViewData["Title"] = "درباره من";
+}
+
+<div class="row">
+    @foreach (var item in Model.AboutUser)
+    {
+        <div class="col-md-3">
+            <br />
+            <img src="~/UserProfile/@item.ImageProfile" width="350" height="400" alt="@item.FullName" />
+        </div>
+        <div class="col-md-9">
+            <h3>نام و نام خانوادگی: @item.FullName</h3>
+            <h1>درباره من</h1>
+            <hr />
+            <p>@item.Bio</p>
+            <div class="col-md-6">
+                <ul>
+                    <li>
+                        <strong>تاریخ تولد: @item.BirthDate </strong>
+                    </li>
+                    <li>
+                        <strong>شماره تماس: @item.Telephone</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    <li>
+                        <strong>ایمیل: @item.Email</strong>
+                    </li>
+                    <li>
+                        <strong>آدرس: @item.Address</strong>
+                    </li>
+                </ul>
+            </div>
+            <a href="/Admin/AboutUser/EditAboutUser/@item.AU_ID" class="btn btn-warning btn-sm">ویرایش</a>
+        </div>
+    }
+
+</div>
+

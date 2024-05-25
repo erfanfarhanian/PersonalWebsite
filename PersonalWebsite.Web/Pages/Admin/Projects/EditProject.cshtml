@@ -1,0 +1,81 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Projects.EditProjectModel
+@{
+    ViewData["Title"] = "ویرایش پروژه";
+}
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Project.ProjectID" />
+        <input type="hidden" asp-for="Project.ProjectImage" />
+        <div class="col-md-8">
+            <h2>اطلاعات مطلب</h2>
+            <hr />
+            <div class="form-group">
+                <label>عنوان پروژه</label>
+                <input type="text" asp-for="Project.Title" class="form-control" />
+                <span asp-validation-for="Project.Title"></span>
+            </div>
+            <div class="form-group">
+                <label>تاریخ پروژه</label>
+                <input type="text" asp-for="Project.ProjectDate" class="form-control" />
+                <span asp-validation-for="Project.ProjectDate"></span>
+            </div>
+            <div class="form-group">
+                <label>توضیح مختصر</label>
+                <textarea class="form-control" asp-for="Project.SDescription" rows="10"></textarea>
+                <span asp-validation-for="Project.SDescription"></span>
+            </div>
+            <div class="form-group">
+                <label>توضیح کامل</label>
+                <textarea class="form-control" asp-for="Project.LDescription" rows="20"></textarea>
+                <span asp-validation-for="Project.LDescription"></span>
+            </div>
+            <input type="submit" value="ذخیره" class="btn btn-success" />
+            <a href="/Admin/Projects/Index" class="btn btn-danger">بازگشت</a>
+        </div>
+        <div class="col-md-4">
+            <br />
+            <br /><br /><br /><br />
+            <img id="ProjectImg" class="thumbnail" src="~/project/image/@Model.Project.ProjectImage" />
+            <div class="form-group">
+                <label>انتخاب تصویر</label>
+                <input type="file" name="imgProjectUp" id="imgProjectUp">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+    {
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#ProjectImg').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgProjectUp").change(function () {
+            readURL(this);
+        });
+
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace('Project_LDescription', {
+            customConfig: '/js/Config.js'
+        });
+
+    </script>
+}
+
+

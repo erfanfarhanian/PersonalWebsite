@@ -1,0 +1,38 @@
+﻿@page
+@model PersonalWebsite.Web.Pages.Admin.Experiences.AddExperienceModel
+@{
+    ViewData["Title"] = "افزودن تجربه کاری جدید";
+}
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <div class="col-md-6">
+            <h2>افزودن تجربه کاری جدید</h2>
+            <hr />
+            <div class="form-group">
+                <label>نام شرکت</label>
+                <input type="text" asp-for="Experience.Title" class="form-control" />
+                <span asp-validation-for="Experience.Title"></span>
+            </div>
+            <div class="form-group">
+                <label>توضیحات</label>
+                <textarea class="form-control" asp-for="Experience.Description" rows="10"></textarea>
+                <span asp-validation-for="Experience.Description"></span>
+            </div>
+            <div class="form-group">
+                <label>از تاریخ</label>
+                <input type="text" asp-for="Experience.FromDate" class="form-control" />
+                <span asp-validation-for="Experience.FromDate"></span>
+            </div>
+            <div class="form-group">
+                <label>تا تاریخ</label>
+                <input type="text" asp-for="Experience.TillDate" class="form-control" />
+                <span asp-validation-for="Experience.TillDate"></span>
+                <p class="help-block">*اگر هنوز مشغول به کار می باشید این فیلد می تواند خالی باشد.</p>
+            </div>
+            <input type="submit" value="ذخیره" class="btn btn-success" />
+            <a href="/Admin/Experiences/Index" class="btn btn-danger">بازگشت</a>
+        </div>
+    </form>
+</div>
+

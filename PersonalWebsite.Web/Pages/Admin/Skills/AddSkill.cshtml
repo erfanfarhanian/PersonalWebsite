@@ -1,0 +1,30 @@
+﻿@page
+@model PersonalWebsite.Web.Pages.Admin.Skills.AddSkillModel
+@{
+    ViewData["Title"] = "افزودن مهارت";
+}
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <div class="col-md-8">
+            <h2>افزودن مهارت</h2>
+            <hr />
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>عنوان مهارت</label>
+                    <input type="text" asp-for="Skill.Title" class="form-control" />
+                    <span asp-validation-for="Skill.Title"></span>
+                </div>
+                <div class="form-group">
+                    <label>میزان مهارت</label>
+                    <input type="text" asp-for="Skill.Percent" class="form-control" />
+                    <span asp-validation-for="Skill.Percent"></span>
+                    <p class="help-block">*فقط عدد وارد کنید.</p>
+                </div>
+                <input type="submit" value="ذخیره" class="btn btn-success" />
+                <a href="/Admin/Skills/Index" class="btn btn-danger">بازگشت</a>
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PersonalWebsite.DataLayer.Entities.User.AboutUser>
+
+<div class="cwi-wrapper">
+    @foreach (var item in Model)
+    {
+        <div class="cwi-single">
+        <div class="cwi-icon-wrapper"><span class="cwi-icon flaticon-smartphone"></span></div>
+        <div class="cwi-details">
+            <div class="cwi-title">شماره تماس</div>
+            <div class="cwi-content">
+                @item.Telephone
+            </div>
+        </div>
+    </div>
+    <div class="cwi-single odd-cwi-item">
+        <div class="cwi-icon-wrapper"><span class="cwi-icon flaticon-placeholder-3"></span></div>
+        <div class="cwi-details">
+            <div class="cwi-title">نشانی</div>
+            <div class="cwi-content">@item.Address</div>
+        </div>
+    </div>
+    <div class="cwi-single">
+        <div class="cwi-icon-wrapper"><span class="cwi-icon flaticon-paper-plane-1"></span></div>
+        <div class="cwi-details">
+            <div class="cwi-title">آدرس ایمیل</div>
+            <div class="cwi-content">
+                @item.Email
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    }
+</div>

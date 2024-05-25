@@ -1,0 +1,41 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Contacts.ShowContactModel
+@using PersonalWebsite.Core.Convertors
+@{
+    ViewData["Title"] = "نمایش پیام";
+}
+
+<div class="col-md-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            نمایش پیام کاربر
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                <input type="hidden" name="contactId" value="@ViewData["contactId"].ToString()" />
+                <dl class="dl-horizontal">
+                    <dt>نام کاربر : </dt>
+                    <dd>@Model.Contact.Name</dd>
+                    <dt>ایمیل : </dt>
+                    <dd>@Model.Contact.Email</dd>
+                    <dt>موضوع : </dt>
+                    <dd>@Model.Contact.Title</dd>
+                    <dt>تاریخ : </dt>
+                    <dd>@Model.Contact.CreateDate.ToShamsi()</dd>
+                    <dt>متن پیام : </dt>
+                    <dd>@Model.Contact.Description</dd>
+                    <dt></dt>
+                    <br />
+                    <dd>
+                        <input type="submit" value="حذف" class="btn btn-warning" />
+                        <a href="/Admin/Contacts/Index" class="btn btn-danger">بازگشت</a>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+

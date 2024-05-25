@@ -1,0 +1,108 @@
+﻿@model Tuple<List<PersonalWebsite.Core.DTOs.Project.ShowProjectListItemViewModel>, int>
+
+@{
+    ViewData["Title"] = "پروژه ها";
+}
+
+@*<img style="width:100%; margin-top:20px;" src="~/style/images/img/project.jpg" alt="Alternate Text" />*@
+<section id="home-2" class="onepager_section_class first-onepage-section first-page-item">
+</section>
+<div style="background-image:url(/images/project-top.jpg);" id="header" class="header-wrapper">
+    <div class="center">
+        <div class="logo">
+            <a asp-controller="Project" asp-action="Index" title="پروژه ها"><img class="logoImage" src="/images/project-logo-top.png" alt="پروژه های من" /><img class="logoImageRetina" src="images/logo.png" alt="عرفان فرهانیان" /></a>
+            <div class="clear">
+            </div>
+        </div>
+        <div dir="rtl" class="menu-wrapper">
+            <div class="main-menu">
+                <div class="menu-main-nav-menu-2-container">
+                    <ul id="menu-main-nav-menu-2" class="sf-menu">
+                        <li class="menu-item"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+                        <li class="menu-item"><a asp-controller="Blog" asp-action="Index">بلاگ</a></li>
+                        <li class="menu-item"><a asp-controller="Project" asp-action="Index">پروژه ها</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="trigger-overlay" class="fa header-search fa-search">
+            </div>
+            <div class="menu-icons-inside">
+                <div class="menu-icon menu-icon-mobile">
+                    <span class="menu-icon-create"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+
+        <div class="mobile-menu-wrapper">
+            <div class="menu-main-nav-menu-container">
+                <ul id="menu-main-nav-menu" class="mobile-menu">
+                    <li class="menu-item"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+                    <li class="menu-item"><a asp-controller="Blog" asp-action="Index">بلاگ</a></li>
+                    <li class="menu-item"><a asp-controller="Project" asp-action="Index">پروژه ها</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+
+<div class="container-wrapper home-container">
+    <div id="container">
+        <!-- start container -->
+        <section id="single-port">
+            <form action="/Project" method="get">
+                <input type="hidden" name="pageId" value="@ViewBag.PageId.ToString()" />
+                <div class="center">
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner ">
+                                <div class="wpb_wrapper">
+                                    <div class="vc_hireme_posts_sh post-items-6925">
+                                        <div class="posts-wrapper">
+                                            <div class="top-page-link"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a> > <span>پروژه ها</span></div>
+                                            @foreach (var item in Model.Item1)
+                                            {
+                                                <div style="float:right; margin-top:20px;" class="post-article">
+                                                    <a href="/ShowProject/@item.ProjectId" class="post-article-thumb">
+                                                        <img style="width:370px; height:360px;" src="/project/thumb/@item.ProjectImage" alt="@item.Title" />
+                                                        <div class="clear"></div>
+                                                        <div class="view-overlay-bg"></div>
+                                                        <ul class="post-article-overlay-details">
+                                                        </ul>
+                                                    </a>
+                                                    <div class="clear"></div>
+                                                    <div class="clear"></div><a href="/ShowProject/@item.ProjectId" class="post-article-title">@item.Title</a>
+                                                    <div dir="rtl" class="post-article-excerpt">@item.SDescription</div>
+                                                    <div class="clear"></div><a href="/ShowProject/@item.ProjectId" class="hireme_post_big_article_read_more">مشاهده</a>
+                                                </div>
+                                            }
+                                            <div class="clear"></div>
+                                        </div>
+                                        @if (Model.Item2 > 1)
+                                        {
+                                            <div class="pagination">
+                                                @for (int i = 1; i <= Model.Item2; i++)
+                                                {
+                                                    <a href="/Project?PageId=@i">@i</a>
+                                                }
+                                            </div>
+                                        }
+                                        <!-- /.pagination -->
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </section>
+    </div>
+    <!-- end container -->
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<PersonalWebsite.DataLayer.Entities.User.Skill>
+
+<div class="vc_progress_bar wpb_content_element  vc_progress-bar-color-bar_grey">
+    @foreach (var item in Model)
+    {
+        <div class="vc_general vc_single_bar"><small class="vc_label">@item.Title <span class="vc_label_units">@item.Percent%</span></small><span class="vc_bar " data-percentage-value="@item.Percent" data-value="@item.Percent"></span></div>
+    }
+</div>

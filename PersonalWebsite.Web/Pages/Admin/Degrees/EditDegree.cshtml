@@ -1,0 +1,34 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Degrees.EditDegreeModel
+@{
+    ViewData["Title"] = "ویرایش مدرک";
+}
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Degree.DegreeId" />
+        <div class="col-md-8">
+            <h2>ویرایش تحصیلات من</h2>
+            <hr />
+            <div class="form-group">
+                <label>عنوان مدرک</label>
+                <input type="text" asp-for="Degree.Title" class="form-control" />
+                <span asp-validation-for="Degree.Title"></span>
+            </div>
+            <div class="form-group">
+                <label>نام موسسه</label>
+                <input type="text" asp-for="Degree.Academy" class="form-control" />
+                <span asp-validation-for="Degree.Academy"></span>
+            </div>
+            <div class="form-group">
+                <label>تاریخ اخذ</label>
+                <input type="text" asp-for="Degree.ReceivedDate" class="form-control" />
+                <span asp-validation-for="Degree.ReceivedDate"></span>
+                <p class="help-block">*این فیلد می تواند خالی باشد.</p>
+            </div>
+            <input type="submit" value="ذخیره" class="btn btn-success" />
+            <a href="/Admin/Degrees/Index" class="btn btn-danger">بازگشت</a>
+        </div>
+    </form>
+</div>
+

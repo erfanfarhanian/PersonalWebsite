@@ -1,0 +1,13 @@
+﻿@model IEnumerable<PersonalWebsite.DataLayer.Entities.User.Education>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <label>مقطع تحصیلی : @item.Title | رشته تحصیلی : @item.Major | دانشگاه : @item.University</label>
+            <br />
+            <p>از تاریخ: @item.FromDate | تا تاریخ: @item.TillDate </p>
+            <br />
+        </li>
+    }
+</ul>

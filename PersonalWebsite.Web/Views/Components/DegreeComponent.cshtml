@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PersonalWebsite.DataLayer.Entities.User.Degree>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <label>@item.Title</label>
+            <br />
+            <p>نام موسسه یا آموزشگاه : @item.Academy</p>
+            <p>تاریخ صدور: @item.ReceivedDate</p>
+            <br />
+        </li>
+    }
+</ul>

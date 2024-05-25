@@ -1,0 +1,46 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Educations.EditEducationModel
+@{
+    ViewData["Title"] = "ویرایش تحصیلات";
+}
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Education.EducationID" />
+        <div class="col-md-8">
+            <h2>ویرایش تحصیلات من</h2>
+            <hr />
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>عنوان مدرک</label>
+                    <input type="text" asp-for="Education.Title" class="form-control" />
+                    <span asp-validation-for="Education.Title"></span>
+                </div>
+                <div class="form-group">
+                    <label>رشته تحصیلی</label>
+                    <input type="text" asp-for="Education.Major" class="form-control" />
+                    <span asp-validation-for="Education.Major"></span>
+                </div>
+                <div class="form-group">
+                    <label>نام دانشگاه یا موسسه</label>
+                    <input type="text" asp-for="Education.University" class="form-control" />
+                    <span asp-validation-for="Education.University"></span>
+                </div>
+                <div class="form-group">
+                    <label>از تاریخ</label>
+                    <input type="text" asp-for="Education.FromDate" class="form-control" />
+                    <span asp-validation-for="Education.FromDate"></span>
+                </div>
+                <div class="form-group">
+                    <label>تا تاریخ</label>
+                    <input type="text" asp-for="Education.TillDate" class="form-control" />
+                    <span asp-validation-for="Education.TillDate"></span>
+                    <p class="help-block">*اگر هنوز مشغول به تحصیل می باشید این فیلد می تواند خالی باشد.</p>
+                </div>
+                <input type="submit" value="ذخیره" class="btn btn-success" />
+                <a href="/Admin/Educations/Index" class="btn btn-danger">بازگشت</a>
+            </div>
+        </div>
+    </form>
+</div>
+

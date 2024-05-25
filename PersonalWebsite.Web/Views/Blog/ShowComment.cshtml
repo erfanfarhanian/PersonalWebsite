@@ -1,0 +1,34 @@
+﻿@using PersonalWebsite.Core.Convertors
+@model Tuple<List<PersonalWebsite.DataLayer.Entities.Weblog.Comment>, int>
+
+@{
+    Layout = null;
+}
+
+
+@foreach (var item in Model.Item1)
+{
+    <!------ Include the above in your HEAD tag ---------->
+    <div class="media">
+        <p class="pull-right"><small>در تاریخ : @item.CreateDate.ToShamsi()</small></p>
+        <a class="media-left" href="#">
+        </a>
+        <div class="media-body">
+
+            <h4 class="media-heading user_name">@item.UserName</h4>
+            @item.UserComment
+
+            <p><small><a href="#">لایک</a> - <a href="#">اشتراک گذاری</a></small></p>
+        </div>
+    </div>
+}
+
+<div class="pagination">
+
+    @for (int i = 1; i <= Model.Item2; i++)
+    {
+        <a onclick="pageComment(@i)">@i</a>
+    }
+
+</div>
+

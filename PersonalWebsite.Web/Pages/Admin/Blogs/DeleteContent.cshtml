@@ -1,0 +1,42 @@
+﻿@page "{id}"
+
+@model PersonalWebsite.Web.Pages.Admin.Blogs.DeleteContentModel
+@using PersonalWebsite.Core.Convertors
+@{
+    ViewData["Title"] = "حذف مطلب";
+}
+
+<div class="col-md-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            حذف مطلب
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                <input type="hidden" name="blogId" value="@ViewData["blogId"].ToString()" />
+
+                <dl class="dl-horizontal">
+                    <dt>عنوان : </dt>
+                    <dd>@Model.ShowBlogForAdminViewModel.Title</dd>
+                    <dt>تصویر : </dt>
+                    <dd><img src="~/blog/thumb/@Model.ShowBlogForAdminViewModel.BlogImageName" alt="@Model.ShowBlogForAdminViewModel.Title" /></dd>
+                    <dt>تاریخ انتشار : </dt>
+                    <dd>@Model.ShowBlogForAdminViewModel.CreateDate.ToShamsi()</dd>
+                    <dt>توضیح مختصر  : </dt>
+                    <dd>@Model.ShowBlogForAdminViewModel.SDescription</dd>
+                    <dt></dt>
+                    <br />
+                    <dd>
+                        <input type="submit" value="حذف" class="btn btn-warning" />
+                        <a href="/Admin/Blogs/Index" class="btn btn-danger">بازگشت</a>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+
+

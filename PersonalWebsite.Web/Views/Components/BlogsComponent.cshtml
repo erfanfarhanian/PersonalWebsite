@@ -1,0 +1,23 @@
+﻿@using PersonalWebsite.Core.Convertors
+@model Tuple<List<PersonalWebsite.Core.DTOs.Blog.ShowBlogListItemViewModel>, int>
+
+@foreach (var item in Model.Item1)
+{
+    <div style="float:right; margin-top:20px;" class="post-article">
+        <a href="/ShowBlog/@item.BlogId" class="post-article-thumb">
+            <img style="width:370px; height:360px;" src="/blog/thumb/@item.BlogImageName" alt="@item.Title" />
+            <div class="clear"></div>
+            <div class="post-article-date-rotated-wrapper"><span class="post-article-date-rotated">@item.CreateDate.ToShamsi()</span></div>
+            <div class="view-overlay-bg"></div>
+            <ul class="post-article-overlay-details">
+                <li class="post-article-overlay-detail"><span class="post-article-overlay-detail-icon fa-eye"></span>287 مشاهده</li>
+                <li class="post-article-overlay-detail"><span class="post-article-overlay-detail-icon fa-comments-o"></span>0 نظر</li>
+            </ul>
+        </a>
+        <div class="clear"></div>
+        <div class="post-article-author">نوشته شده توسط  <a asp-controller="Blog" asp-action="Index" class="post-article-author-link">عرفان فرهانیان</a></div>
+        <div class="clear"></div><a href="/ShowBlog/@item.BlogId" class="post-article-title">@item.Title</a>
+        <div dir="rtl" class="post-article-excerpt">@item.SDescription</div>
+        <div class="clear"></div><a href="/ShowBlog/@item.BlogId" class="hireme_post_big_article_read_more">ادامه مطلب</a>
+    </div>
+}

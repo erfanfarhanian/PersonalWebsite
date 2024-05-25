@@ -1,0 +1,30 @@
+﻿@model Tuple<List<PersonalWebsite.Core.DTOs.Project.ShowProjectListItemViewModel>, int>
+
+<div dir="rtl" class="pego-isotope-wrapper portfolio-items-wrapper portfolio-items-379">
+    @foreach (var item in Model.Item1)
+    {
+        <div class="portfolio-items-single isotope-item">
+            <div class="portfolio-items-thumbnail-wrapper">
+                <img style="width:430px; height:500px;" src="/project/thumb/@item.ProjectImage" alt="@item.Title" />
+                <a href="/ShowProject/@item.ProjectId" class="portfolio-items-overlay">
+                    <div class="table_view">
+                        <div class="table_cell">
+                            <span class="fa portfolio-items-icons fa-link"></span>
+                            <div class="portfolio-items-title">@item.Title</div>
+                            <p style="color:white">@item.SDescription</p>
+                            <div class="title-icon-type2 light">
+                                <div class="title-icon-line2"></div>
+                                <div class="title-icon-line2 line-short-left"></div>
+                                <div class="title-icon-line2 line-short-right"></div>
+                                <div class="clear"></div>
+                                <div class="title-icon-line2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-hover-line-start"></div>
+                    <div class="portfolio-hover-line-end"></div>
+                </a>
+            </div>
+        </div>
+    }
+</div>

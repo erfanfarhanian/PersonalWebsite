@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "تماس با من";
+}
+
+<img style="width:100%;" src="~/style/images/img/contact.jpg" alt="Alternate Text" />
+<div class="light-wrapper">
+    <div class="container inner">
+        <div class="row">
+            <h1 class="post-title">تماس با من</h1>
+            <p>با استفاده از این فرم می توانید با من در تماس باشید. </p>
+            <div class="col-sm-8">
+                <div class="divide20"></div>
+                <div class="form-container">
+                    <div class="response alert alert-success"></div>
+                    @if (ViewBag.SuccessMessage != null)
+                    {
+                        <div class="alert alert-success">
+                            <p class="help-block">پیام شما با موفقیت ثبت شد.</p>
+                        </div>
+                    }
+                    <form asp-controller="Contact" asp-action="CreateContact">
+                        <input type="text" id="contact_Name" name="contact.Name" class="text-input" required oninvalid="this.setCustomValidity('لطفا نام خود را وارد کنید')" oninput="this.setCustomValidity('')" placeholder="نام*" />
+                        <input type="text" id="contact_Email" name="contact.Email" class="text-input email" required oninvalid="this.setCustomValidity('لطفا ایمیل خود را وارد کنید')" oninput="this.setCustomValidity('')" placeholder="ایمیل*" />
+                        <input type="text" id="contact_Title" name="contact.Title" class="text-input" required oninvalid="this.setCustomValidity('لطفا موضوع خود را وارد کنید')" oninput="this.setCustomValidity('')" placeholder="موضوع*" />
+                        <textarea id="contact_Description" name="contact.Description" class="text-area" required oninvalid="this.setCustomValidity('لطفا متن پیام خود را وارد کنید')" oninput="this.setCustomValidity('')" placeholder="متن پیام*"></textarea>
+                        <input type="submit" value="ثبت" name="submit" class="btn btn-submit bm0" />
+                    </form>
+                </div>
+                <!-- /.form-container -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+</div>

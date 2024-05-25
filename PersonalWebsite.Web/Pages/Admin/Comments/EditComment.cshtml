@@ -1,0 +1,60 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Comments.EditCommentModel
+@using PersonalWebsite.Core.Convertors
+@{
+    ViewData["Title"] = "وضعیت نظر";
+}
+
+<div class="col-md-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            تغییر وضعیت
+        </div>
+        <div class="panel-body">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Comment.CommentId" />
+                <input type="hidden" asp-for="Comment.BlogId" />
+                <dl class="dl-horizontal">
+                    <dt>نام کاربر : </dt>
+                    <dd>
+                        @Model.Comment.UserName
+                        <input type="hidden" asp-for="Comment.UserName" />
+                    </dd>
+                    <dt>تاریخ نظر  : </dt>
+                    <dd>
+                        @Model.Comment.CreateDate.ToShamsi()
+                        <input type="hidden" asp-for="Comment.CreateDate" />
+                    </dd>
+                    <dt>متن نظر  : </dt>
+                    <dd>
+                        @Model.Comment.UserComment
+                        <input type="hidden" asp-for="Comment.UserComment" />
+                    </dd>
+                    <dt>وضعیت  : </dt>
+                    <dd>
+                        @if (Model.Comment.IsAdminRead == true)
+                        {
+                            <p class="text text-success">تایید</p>
+                        }
+                        @if (Model.Comment.IsAdminRead == false)
+                        {
+                            <p class="text text-danger">عدم تایید</p>
+                        }
+                        <input type="hidden" asp-for="Comment.IsAdminRead" />
+                        <input type="hidden" asp-for="Comment.IsDelete" />
+                    </dd>
+                    <dt></dt>
+                    <br />
+                    <dd>
+                        <input type="submit" value="تغییر وضعیت" class="btn btn-primary" />
+                        <a href="/Admin/Comments/Index" class="btn btn-danger">بازگشت</a>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+

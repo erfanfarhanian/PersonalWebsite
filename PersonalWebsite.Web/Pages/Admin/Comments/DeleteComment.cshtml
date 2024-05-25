@@ -1,0 +1,47 @@
+﻿@page "{id}"
+@model PersonalWebsite.Web.Pages.Admin.Comments.DeleteCommentModel
+@using PersonalWebsite.Core.Convertors
+@{
+    ViewData["Title"] = "حذف نظر";
+}
+
+<div class="col-md-12">
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            حذف نظر
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                <input type="hidden" name="commentId" value="@ViewData["commentId"].ToString()" />
+                <dl class="dl-horizontal">
+                    <dt>نام کاربر : </dt>
+                    <dd>@Model.ShowCommentForAdminViewModel.UserName</dd>
+                    <dt>تاریخ نظر  : </dt>
+                    <dd>@Model.ShowCommentForAdminViewModel.CreateDate.ToShamsi()</dd>
+                    <dt>متن نظر  : </dt>
+                    <dd>@Model.ShowCommentForAdminViewModel.UserComment</dd>
+                    <dt>وضعیت  : </dt>
+                    <dd>
+                        @if (Model.ShowCommentForAdminViewModel.IsAdminRead == true)
+                        {
+                            <div class="text text-success">تایید</div>
+                        }
+                        @if (Model.ShowCommentForAdminViewModel.IsAdminRead == false)
+                        {
+                            <div class="text text-danger">عدم تایید</div>
+                        }
+                    </dd>
+                    <dt></dt>
+                    <br />
+                    <dd>
+                        <input type="submit" value="حذف" class="btn btn-warning" />
+                        <a href="/Admin/Comments/Index" class="btn btn-danger">بازگشت</a>
+                    </dd>
+                </dl>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
