@@ -34,5 +34,4 @@ The full source code of my personal website and portfolio, featuring a responsiv
 </p>
 <img width="1623" height="973" alt="image" src="https://github.com/user-attachments/assets/c14b7b72-cc96-4b8b-acd3-168b546da994" />
 <img width="1623" height="984" alt="image" src="https://github.com/user-attachments/assets/f626bcce-b3e8-4388-a1e1-6a8324a9d86c" />
-<img width="1666" height="971" alt="image" src="https://github.com/user-attachments/assets/7bf0b0f9-dab5-44c7-aa62-e627bb9c82b1" />
 <img width="1671" height="982" alt="image" src="https://github.com/user-attachments/assets/ad21c5d0-303f-4d48-8cf6-d0fba5f827f5" />
